@@ -14,13 +14,6 @@ public class UserController {
     UserService userService;
 
     @GetMapping(path = "")
-
-    @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
-    }
-
-    @GetMapping(path = "")
     public List<User> findAllUsers() {
         return userService.findAllUsers();
     }

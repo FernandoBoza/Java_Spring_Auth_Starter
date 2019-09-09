@@ -30,8 +30,8 @@ public class UserService implements UserDetailsService {
     }
 
     public User createUser(User user) {
-        User u = findUserByEmail(user.getEmail());
-        if (u.getEmail().equals(user.getEmail())) {
+        User userExist = findUserByEmail(user.getEmail());
+        if (userExist != null) {
             return null;
         } else {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
