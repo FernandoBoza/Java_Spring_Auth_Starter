@@ -17,26 +17,12 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    public User createUser(User user){
-        return userRepo.save(user);
-    }
+    public User createUser(User user) { return userRepo.save(user); }
 
-    public User findById(String id){
-        return getFromOptional(userRepo.findById(id));
-    }
+    public User findById(String id) { return getFromOptional(userRepo.findById(id)); }
 
-    public User findUserByFirstName(String firstName){
-        return userRepo.findUserByFirstName(firstName);
-    }
+    public User findUserByName(String name) { return userRepo.findUserByName(name); }
 
-    public User findUserByFirstNameAndLastName(String firstName, String lastName){
-        return userRepo.findUserByFirstNameAndLastName(firstName, lastName);
-    }
-
-    public List<User> findAllUsers(){
-        return userRepo.findAll();
-    }
-
-
+    public List<User> findAllUsers() { return userRepo.findAll(); }
 
 }

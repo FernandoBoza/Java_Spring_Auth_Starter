@@ -23,8 +23,14 @@ public class UserController {
         return userService.findAllUsers();
     }
 
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "id/{id}")
     public User findById(@PathVariable String id) {
         return userService.findById(String.valueOf(id));
     }
+
+    @GetMapping(path = "{name}")
+    public User findUserByName(@PathVariable String name) {
+        return userService.findUserByName(name);
+    }
+
 }
