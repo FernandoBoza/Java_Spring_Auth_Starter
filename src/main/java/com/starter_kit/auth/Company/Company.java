@@ -1,9 +1,12 @@
 package com.starter_kit.auth.Company;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.List;
 
 public class Company {
-    public long id;
+    @Id
+    public String id;
     public String name;
-    public List<Long> usersId;
+    public List<String> usersId;
 }
