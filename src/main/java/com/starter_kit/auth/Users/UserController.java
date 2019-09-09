@@ -13,6 +13,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @GetMapping(path = "")
+
     @PostMapping(path = "", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);

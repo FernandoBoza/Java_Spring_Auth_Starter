@@ -1,4 +1,4 @@
-package com.starter_kit.auth;
+package com.starter_kit.auth.Utils;
 
 import java.util.Optional;
 

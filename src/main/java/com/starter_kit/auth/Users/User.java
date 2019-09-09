@@ -14,7 +14,8 @@ public class User {
     private String companyID;
     private String imageURL;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String name, String password, String email, String role, String companyID) {
         this.name = name;
@@ -68,7 +69,11 @@ public class User {
         this.companyID = companyID;
     }
 
-    public String getImageURL() { return imageURL; }
+    public String getImageURL() {
+        return imageURL;
+    }
 
-    public void setImageURL(String imageURL) { this.imageURL = imageURL; }
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 }
