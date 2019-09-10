@@ -29,6 +29,7 @@ public class UserService implements UserDetailsService {
         this.userRepo = userRepo;
     }
 
+
     public User createUser(User user) {
         User userExist = findUserByEmail(user.getEmail());
         if (userExist != null) {
@@ -58,8 +59,9 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        System.out.println("from loadUserByUsername email: " + email);
         User user = userRepo.findUserByEmail(email);
-        if (user != null){
+        if (user != null) {
             List<GrantedAuthority> authorities = getUserAuthority(user.getRole());
             return buildUserForAuthentication(user, authorities);
         } else {
@@ -74,7 +76,7 @@ public class UserService implements UserDetailsService {
         return new ArrayList<>(roles);
     }
 
-    private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities){
+    private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }

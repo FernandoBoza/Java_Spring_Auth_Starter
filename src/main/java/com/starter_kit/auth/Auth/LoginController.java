@@ -16,20 +16,32 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(path = "login", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public UserDetails login(@RequestBody User user){
+    @GetMapping(path = "/login")
+    public String login() { return "Login Page"; }
+
+    @PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public UserDetails login(@RequestBody User user) {
         return userService.loadUserByUsername(user.getEmail());
     }
 
-    @PostMapping(path = "register", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/register", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
 
-    @GetMapping(path = "dashboard")
+    @GetMapping(path = "/register")
+    public String createUser() {  return "Register Page"; }
+
+    @GetMapping(path = "/dashboard")
     public User forwardToDashboard(){
+        System.out.println("passed");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return userService.findUserByEmail(auth.getName());
+    }
+
+    @GetMapping(path = "")
+    public String home(){
+        return "home index";
     }
 
 }
