@@ -59,7 +59,6 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        System.out.println("from loadUserByUsername email: " + email);
         User user = userRepo.findUserByEmail(email);
         if (user != null) {
             List<GrantedAuthority> authorities = getUserAuthority(user.getRole());
