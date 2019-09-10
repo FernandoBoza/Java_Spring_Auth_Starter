@@ -36,7 +36,12 @@ public class UserService implements UserDetailsService {
             return null;
         } else {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            user.setRole(ADMIN);
+
+            if (user.getRole() == null) {
+                user.setRole(ADMIN);
+            } else {
+                user.setRole(USER);
+            }
             return userRepo.save(user);
         }
     }

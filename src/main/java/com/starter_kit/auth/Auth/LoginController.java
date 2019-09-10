@@ -31,4 +31,10 @@ public class LoginController {
         return userService.findUserByEmail(auth.getName());
     }
 
+    @GetMapping(path = "/dashboard/user")
+    public User forwardToUserDashboard() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return userService.findUserByEmail(auth.getName());
+    }
+
 }
