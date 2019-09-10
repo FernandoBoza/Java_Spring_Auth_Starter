@@ -16,10 +16,8 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-//    @GetMapping(path = "/login")
-//    public String login() {
-//        return "Login Page";
-//    }
+    @GetMapping(path = "/login")
+    public String login() { return "Login Page"; }
 
     @PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public UserDetails login(@RequestBody User user) {
