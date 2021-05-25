@@ -44,14 +44,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/register").permitAll()
+                .antMatchers("/", "/login", "/register").permitAll()
                 .antMatchers("/dashboard/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler)
                 .loginPage("/login").failureUrl("/login?error=true")
-                .usernameParameter("email")
-                .passwordParameter("password")
+                .usernameParameter("email").passwordParameter("password")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling();
